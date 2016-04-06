@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Validation Demo</title>
+<style>
+.list, .rule {
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+  padding-bottom: 2em;
+}
+textarea {
+  width: 90%;
+  height: 2em;
+}
+#rules {
+  height: 5em;
+}
+.addRule {
+}
+#notification {
+  display: none;
+  font-weight: bold;
+}
+.error {
+  background: #e55;
+  display: block;
+}
+.fail {
+  background: #dd5;
+}
+.pass {
+  background: #5e5;
+}
+
+#code {
+  width: 80%;
+  height: 20em;
+  margin-left: 10%;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="codemirror.css">
+  </head>
+  <body>
+    
+    <div class="list">
+      <div class="listName">Whitelist (comma-separated, must be in below code) : </div>
+      <textarea id="whitelist">
+console.log, while, for
+      </textarea>
+    </div>
+    <div class="list">
+      <div class="listName">Blacklist (comma-separated, must NOT be in below code) : </div>
+      <textarea id="blacklist">
+alert,prompt
+      </textarea>
+    </div>
+    <div class="rule">
+      <div class="listName">Rules (comma-separated in nesting order, new lines for more rules) : </div>
+      <textarea id="rules">
+while,else,doADifferentThing
+for,console.log
+if,if,if,if,warn</textarea>
+    </div>
+
+
+    <div id="notification"></div>
+    <textarea id="code">
+while(1) {
+  if (someCondition) {
+    doAThing();
+  } else {
+    doADifferentThing();
+  }
+}
+for (var i=0; i&lt;10; i++) {
+  // try removing alert from blacklist, then uncomment below to pass
+  //console.log('ok');/*
+  alert('not ok');
+  //*/
+}
+if (1) {
+  if (2) {
+    if (3) 
+      if (4)
+        warn();
+  }
+}
+</textarea>
+
+  </body>
+  <!-- script tag madness because it's quick and works -->
+  <!-- externals -->
+  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script src="codemirror-compressed.js"></script>
+  <script src="esprima.js"></script>
+  <!-- Polyfilled a few functions (string/array helpers) -->
+  <script src="ie8polyfills.js"></script>
+  <!-- Wrapper to make swapping parsers easier -->
+  <script src="parser.js"></script>
+  <!-- Does the actual code checking -->
+  <script src="validator.js"></script>
+  <!-- Runs above and does stuff in this page -->
+  <script src="validate.js"></script>
+</html>
