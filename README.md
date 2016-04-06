@@ -58,6 +58,6 @@ Passing is a Boolean and always exists, the other properties will only appear si
 
 Known issues:
 
-If/else nesting checks may not work as-intended
-Function declarations not available as nesting rule
-All JS words not mapped to types
+* If/else nesting checks may not work as-intended
+* Function declarations not available as nesting rule
+* All JS words not mapped to types
