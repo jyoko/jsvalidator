@@ -4,6 +4,8 @@ Quick example of doing simple Javascript validation based on a whitelist, blackl
 
 Check it out: [https://jyoko.github.io/jsvalidator](https://jyoko.github.io/jsvalidator)
 
+Intentionally tried to minimize dependencies/complexity as much as possible, as the core part of the application is probably better-suited as a plugin/integration to existing code. That and backwards-compatibility being the only requirements, no build steps and trusty ES5 here.
+
 AST generation is done with [Esprima](http://esprima.org). Chose Esprima for a few reasons, not least of which being I'd used it before. Additionally, Esprima is well maintained, easy-to-read, relatively lightweight, and is at the top of most benchmarks. _Most_ benchmarks being key; I've never seen Esprima do poorly, but some (Acorn and Uglify2 specifically) do better on certain codebases, so I abstracted the "parser" out.
 
 Other external dependencies are [CodeMirror](https://codemirror.net/) for a nicer editor (not that the demo has options for switching keybindings or anything, but vim/emacs/sublime are available) and [jQuery 1.x](https://jquery.com/browser-support/) to handle IE8 (er.. cross-browser) issues.
